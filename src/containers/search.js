@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addData } from "../actions/index";
 import _ from "lodash";
+import _get from 'lodash/get';
 
 class Search extends Component{
 	componentDidMount(){
@@ -11,27 +12,30 @@ class Search extends Component{
 	}
     render(){
         let item;
-        if(this.props.data) {
-          item = _.map(this.props.data, data => {
+         console.log(this.props.data)
+
+         const categories = _.get(this.props.data, 
+         	'_embedded.city:search-results[0]._embedded.city:item._embedded.city:urban_area._embedded.ua:scores.categories', [])
+         console.log(categories)
+
+          if(this.props.data) {
+          item = _.map(categories, data => {
 
          return (
-             <li key={data.id}>
-             {data.title}
+             <li key={data.name}>
+             {data.name}
+             {data.score_out_of_10}
              </li>
-         /* this returns empty data. Only bullet button appears.
-         In console, it says [Each child in an array or iterator should have a unique "key" prop.]
-         Even though I added a key value. */
          )
      })
     }   
 
-
+       
 return(
     <div>{item}</div>
 )
 }
 }
-
 function mapStateToProps(state){
 	return {
 		data : state.data.data

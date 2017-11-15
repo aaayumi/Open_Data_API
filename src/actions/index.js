@@ -25,9 +25,8 @@ export function addData(){
 }
 
 function fetchData() {
-	const URL = "https://jsonplaceholder.typicode.com/posts";
+	const URL = "https://api.teleport.org/api/cities/?search=Tokyo&embed=city%3Asearch-results%2Fcity%3Aitem%2Fcity%3Aurban_area%2Fua%3Ascores";
 	return fetch(URL, { method: 'GET'})
 	    .then( response => Promise.all([response, response.json()]));
-
 }
     

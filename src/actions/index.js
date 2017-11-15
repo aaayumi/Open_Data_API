@@ -1,32 +1,15 @@
-function fetchDataRequest(){
-  return {
-    type: "FETCH_DATA"
-  }
-}
+import axios from "axios";
 
-function fetchDataSuccess(payload) {
+const ROOT_URL = "https://api.teleport.org/api/cities/?search=";
+const EMBED = "&embed=city%3Asearch-results%2Fcity%3Aitem%2Fcity%3Aurban_area%2Fua%3Ascores";
+
+
+export function addData(city) {
+ const URL = `${ROOT_URL}${city}${EMBED}`
+  const request = axios.get(URL);
+
   return {
     type: "FETCH_SUCCESS",
-    payload
-  }
+    payload: request
+  };
 }
-
-
-export function addData(){
-	return (dispatch) => {
-		dispatch(fetchDataRequest());
-		return fetchData().then(([response, json]) => {
-			if(response.status === 200) {
-				dispatch(fetchDataSuccess(json))
-			}
-			//error handling
-		})
-	}
-}
-
-function fetchData() {
-	const URL = "https://api.teleport.org/api/cities/?search=Tokyo&embed=city%3Asearch-results%2Fcity%3Aitem%2Fcity%3Aurban_area%2Fua%3Ascores";
-	return fetch(URL, { method: 'GET'})
-	    .then( response => Promise.all([response, response.json()]));
-}
-    

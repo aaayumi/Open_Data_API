@@ -4,11 +4,11 @@ import Data from '../containers/data';
 
 export default class App extends Component {
   render() {
-    return (
+ 	return(
       <div>
       <Search />
-    
+      <Data />
       </div>
-    );
+    )
   }
 }

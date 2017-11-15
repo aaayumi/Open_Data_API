@@ -1,17 +1,33 @@
-import axios from 'axios';
-
-const ROOT_URL = "https://api.teleport.org/api/cities/?search";
-
-const ADD_DATA = 'ADD_DATA';
-
-export function addData(city){
-    const url = `${ROOT_URL}=${city}`;
-    console.log("url" + url)
-    const request = axios.get(url);
-    console.log("request" + request)
-    return {
-	    type: ADD_DATA,
-	    payload: request
-    };
+function fetchDataRequest(){
+  return {
+    type: "FETCH_DATA"
+  }
 }
 
+function fetchDataSuccess(payload) {
+  return {
+    type: "FETCH_SUCCESS",
+    payload
+  }
+}
+
+
+export function addData(){
+	return (dispatch) => {
+		dispatch(fetchDataRequest());
+		return fetchData().then(([response, json]) => {
+			if(response.status === 200) {
+				dispatch(fetchDataSuccess(json))
+			}
+			//error handling
+		})
+	}
+}
+
+function fetchData() {
+	const URL = "https://jsonplaceholder.typicode.com/posts";
+	return fetch(URL, { method: 'GET'})
+	    .then( response => Promise.all([response, response.json()]));
+
+}
+    

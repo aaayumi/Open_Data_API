@@ -8,9 +8,9 @@ class Search extends Component{
 		this.state = {
 			city : ""
 		}
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    	}
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
 
 	handleChange(event) {
 		this.setState({

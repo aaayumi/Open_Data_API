@@ -7,7 +7,7 @@ import logger from 'redux-logger'
 
 import App from './components/app';
 import reducers from './reducers';
-import Search from './containers/search';
+
 
 const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, logger)(createStore);
 

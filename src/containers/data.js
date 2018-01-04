@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import _ from "lodash";
-import Highcharts from 'highcharts';
+//import Highcharts from 'highcharts';
 
 class Data extends Component{
     render(){
@@ -33,76 +33,18 @@ class Data extends Component{
     // extract score data and store them in array
     if(categories){
          _.map(categories, data=> {
-        return score.push(data.score_out_of_10)
+        return score.push([data.score_out_of_10],)
             })
     }
     
     console.log( score)// returns [7.721, 5.112, 2.668, 2.609000000000001, 6.5585, 4.3845, 8.418, 9.924, 9.081666666666665, 5.589, 5.1165, 3.7184999999999997, 5.990000000000001, 1.714, 7.2265, 6.5055, 4.7645]
 
-         
-    const options = {
-         title: {
-           text: 'Comparison',
-         },
-         xAxis: {
-           categories: [
-          'Housing',
-          'Cost of Living',
-          'Startups',
-          'Venture Capital',
-          'Travel Connectivity',
-          'Commute',
-          'Business Freedom',
-          'Safety',
-          'Education',
-          'Environmental Quality',
-          'Economy',
-          'Taxation',
-          'Internet Access',
-          'Leisure & Culture',
-          'Tolerance',
-          'Outdoors'
-         ],
-        },
-        yAxis: {
-          title: {
-             text: 'Out of 10',
-        },
-        },
-        chart: {
-          type: 'bar',
-        },
-        series: [
-        {
-          data: score  //this does not work
-        }
-        ],
-        };
     return(
          <div>
              <p>{summary.teleport_city_score}</p>
              <div>{item}</div>
-             <Chart options={options} />
         </div>
     )
-    }
-}
-
-class Chart extends Component {
-
-    componentDidMount() {
-         this.chart = new Highcharts[this.props.type || 'Chart'](
-         this.chartEl,
-         this.props.options
-        );
-     }
-
-    componentWillUnmount() {
-         this.chart.destroy();
-     }
-
-    render() {
-         return <div ref={el => (this.chartEl = el)} />;
     }
 }
 

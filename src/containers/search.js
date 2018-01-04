@@ -28,7 +28,8 @@ class Search extends Component{
     render(){
        
     return(
-        <div>
+        <div className="search">
+        <p>Search for your ideal city in the world!</p>
         <form onSubmit={this.handleSubmit}>
         <input type="text"
            placeholder="add text"

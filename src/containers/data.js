@@ -21,8 +21,7 @@ class Data extends Component{
            
          return (
              <li key={data.name}>
-             {data.name}
-             {data.score_out_of_10}
+                 {data.name}  {data.score_out_of_10}
              </li>
          )
      })
@@ -36,12 +35,9 @@ class Data extends Component{
         return score.push([data.score_out_of_10],)
             })
     }
-    
-    console.log( score)// returns [7.721, 5.112, 2.668, 2.609000000000001, 6.5585, 4.3845, 8.418, 9.924, 9.081666666666665, 5.589, 5.1165, 3.7184999999999997, 5.990000000000001, 1.714, 7.2265, 6.5055, 4.7645]
-
     return(
-         <div>
-             <p>{summary.teleport_city_score}</p>
+         <div className="data">
+             <h2>Total Score : {(summary.teleport_city_score)} </h2>
              <div>{item}</div>
         </div>
     )

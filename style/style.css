@@ -1,16 +1,45 @@
 .search {
 	margin-top: 20px;
-	
+	text-align: center;
 }
+
+/*.data {*/
+	/*display: flex;*/
+	/*justify-content: center;*/
+	/*align-items: stretch;*/
+/*}*/
 
 form {
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 input {
 	border: 1px solid black;
+	height: 30px;
+	width: 200px;
 }
 
 button {
-	background: blue;
+	height: 30px;
+	background: #F3F781;
+	border: none;
+}
+
+button:hover {
+	height: 30px;
+	background: #FA8258;
+	border: none;
+}
+
+h2 {
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+}
+li {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
 }

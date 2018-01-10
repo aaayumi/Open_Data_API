@@ -32,7 +32,7 @@ class Search extends Component{
         <p>Search for your ideal city in the world!</p>
         <form onSubmit={this.handleSubmit}>
         <input type="text"
-           placeholder="add text"
+           placeholder="Add City ex) Tokyo"
            onChange={this.handleChange}
            value={this.state.city}
            />
